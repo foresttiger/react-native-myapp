@@ -21,7 +21,7 @@ import {
     AsyncStorage,
     Platform
 } from 'react-native';
-import  '../storage/Utilstorage.js'
+import '../storage/Utilstorage.js'
 //首页
 import Home from '../apps/pages/Home.js';
 // // 灵感库
@@ -39,6 +39,10 @@ import MainPage from '../apps/pages/MainPage'
 import FormList from '../apps/pages/Form'
 //注册
 import Register from '../apps/pages/Register'
+//关于我们
+import AboutUsPage from '../apps/pages/AboutUs'
+
+
 
 // import OnLineYun from './Test1.js';
 // import Test1 from './Test1.js';
@@ -84,35 +88,33 @@ const isIos = Platform.OS == "ios"
 const MyTab = TabNavigator({
     Home: {
         screen: Home,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
-            tabBarVisible:true, // 是否隐藏标签栏。默认不隐藏(true)
-            tabBarIcon: (({tintColor,focused}) => {
-                return(
-                    <Image
-                        source={!focused ? Home_off : Home_on}
-                        style={[{height:20,width:20 }, {tintColor: tintColor}]}
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+            tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
+            tabBarIcon: (({ tintColor, focused }) => {
+                return ( <
+                    Image source = {!focused ? Home_off : Home_on } style = {
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
                     />
                 )
             }), // 设置标签栏的图标。需要单独设置。
-            tabBarLabel:'首页', // 设置标签栏的title。推荐这个方式。
+            tabBarLabel: '首页', // 设置标签栏的title。推荐这个方式。
         })
     },
     Discover: {
-        screen:Discover,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
-            tabBarVisible:true, // 是否隐藏标签栏。默认不隐藏(true)
-            tabBarIcon: (({tintColor,focused}) => {
-                return(
-                    <Image
-                        source={!focused ? Discover_off : Discover_on}
-                        style={[{height:20,width:20 }, {tintColor: tintColor}]}
+        screen: Discover,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+            tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
+            tabBarIcon: (({ tintColor, focused }) => {
+                return ( <
+                    Image source = {!focused ? Discover_off : Discover_on } style = {
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
                     />
                 )
             }), // 设置标签栏的图标。需要单独设置。
-            tabBarLabel:'灵感库', // 设置标签栏的title。推荐这个方式。
-         })
+            tabBarLabel: '灵感库', // 设置标签栏的title。推荐这个方式。
+        })
         // navigationOptions: ()=> TabOptions('我的',MainIcon,MainIcon,'我的'),
     },
     /*OnLineYun:{
@@ -131,42 +133,41 @@ const MyTab = TabNavigator({
             tabBarLabel:'云设计', // 设置标签栏的title。推荐这个方式。
          })
         // navigationOptions: ()=> TabOptions('云设计',Onlineyun_off,Onlineyun_on,'云设计'),
-    },
+    },*/
     My: {
-        screen:My,
+        screen: My,
         // screen:LoginPage,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
-            tabBarVisible:true, // 是否隐藏标签栏。默认不隐藏(true)
-            tabBarIcon: (({tintColor,focused}) => {
-                return(
-                    <Image
-                        source={!focused ? My_off : My_on}
-                        style={[{height:20,width:20 }, {tintColor: tintColor}]}
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+            tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
+            tabBarIcon: (({ tintColor, focused }) => {
+                return ( <
+                    Image source = {!focused ? My_off : My_on } style = {
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
                     />
                 )
             }), // 设置标签栏的图标。需要单独设置。
-            tabBarLabel:'我的', // 设置标签栏的title。推荐这个方式。
-         })
+            tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
+        })
         // navigationOptions: ()=> TabOptions('我的',My_off,My_on,'我的'),
-    }*/
-},{
-    tabBarPosition:'bottom', // 设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom')
-    swipeEnabled:false, // 是否允许在标签之间进行滑动。
+    }
+}, {
+    tabBarPosition: 'bottom', // 设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom')
+    swipeEnabled: false, // 是否允许在标签之间进行滑动。
     animationEnabled: false, // 是否在更改标签时显示动画。
-    lazy:true, // 是否根据需要懒惰呈现标签，而不是提前制作，意思是在app打开的时候将底部标签栏全部加载，默认false,推荐改成true哦。
-    initialRouteName:'', // 设置默认的页面组件
-    backBehavior:'none', // 按 back 键是否跳转到第一个Tab(首页)， none 为不跳转
-    tabBarOptions:{
+    lazy: true, // 是否根据需要懒惰呈现标签，而不是提前制作，意思是在app打开的时候将底部标签栏全部加载，默认false,推荐改成true哦。
+    initialRouteName: '', // 设置默认的页面组件
+    backBehavior: 'none', // 按 back 键是否跳转到第一个Tab(首页)， none 为不跳转
+    tabBarOptions: {
         // iOS属性
         // 因为第二个tabbar是在页面中创建的，所以前景色的设置对其无效，当然也可以通过设置tintColor使其生效
-        activeTintColor:'#c0a354', // label和icon的前景色 活跃状态下（选中）。
-        inactiveTintColor:'#454545', // label和icon的前景色 不活跃状态下(未选中)。
+        activeTintColor: '#c0a354', // label和icon的前景色 活跃状态下（选中）。
+        inactiveTintColor: '#454545', // label和icon的前景色 不活跃状态下(未选中)。
 
-        activeBackgroundColor:'#ffffff', //label和icon的背景色 活跃状态下（选中） 。
-        inactiveBackgroundColor:'#ffffff', // label和icon的背景色 不活跃状态下（未选中）。
+        activeBackgroundColor: '#ffffff', //label和icon的背景色 活跃状态下（选中） 。
+        inactiveBackgroundColor: '#ffffff', // label和icon的背景色 不活跃状态下（未选中）。
 
-        showLabel:true, // 是否显示label，默认开启。
+        showLabel: true, // 是否显示label，默认开启。
         // style:{}, // tabbar的样式。
         // labelStyle:{}, //label的样式。
 
@@ -174,18 +175,18 @@ const MyTab = TabNavigator({
 
         // activeTintColor:'', // label和icon的前景色 活跃状态下（选中） 。
         // inactiveTintColor:'', // label和icon的前景色 不活跃状态下(未选中)。
-        showIcon:true, // 是否显示图标，默认关闭。
+        showIcon: true, // 是否显示图标，默认关闭。
         // showLabel:true, //是否显示label，默认开启。
-        style:{backgroundColor: '#ffffff'}, // tabbar的样式。
+        style: { backgroundColor: '#ffffff' }, // tabbar的样式。
         // labelStyle:{}, // label的样式。
-        upperCaseLabel:false, // 是否使标签大写，默认为true。
+        upperCaseLabel: false, // 是否使标签大写，默认为true。
         // pressColor:'', // material涟漪效果的颜色（安卓版本需要大于5.0）。
         // pressOpacity:'', // 按压标签的透明度变化（安卓版本需要小于5.0）。
-        scrollEnabled:false, // 是否启用可滚动选项卡。
-        tabStyle:{alignItems: 'center',justifyContent: 'center',height: 50}, // tab的样式。
-        indicatorStyle:{height:0}, // 标签指示器的样式对象（选项卡底部的行）。安卓底部会多出一条线，可以将height设置为0来暂时解决这个问题。
-        labelStyle:{margin:0,fontSize: 10,paddingBottom: isIos?5:0}, // label的样式。
-        iconStyle:{marginTop: 0}, // 图标的样式。
+        scrollEnabled: false, // 是否启用可滚动选项卡。
+        tabStyle: { alignItems: 'center', justifyContent: 'center', height: 50 }, // tab的样式。
+        indicatorStyle: { height: 0 }, // 标签指示器的样式对象（选项卡底部的行）。安卓底部会多出一条线，可以将height设置为0来暂时解决这个问题。
+        labelStyle: { margin: 0, fontSize: 10, paddingBottom: isIos ? 5 : 0 }, // label的样式。
+        iconStyle: { marginTop: 0 }, // 图标的样式。
     }
 
 });
@@ -196,8 +197,8 @@ const MyTab = TabNavigator({
 const MyNav = StackNavigator({
     // 将TabNavigator包裹在StackNavigator里面可以保证跳转页面的时候隐藏tabbar
     //第一个为初始页面
-    MyTab:{
-        screen:MyTab,
+    MyTab: {
+        screen: MyTab,
 
     },
     // 将需要跳转的页面注册在这里，全局才可以跳转
@@ -207,80 +208,84 @@ const MyNav = StackNavigator({
     // Detail2:{
     //     screen:Detail2,
     // },    
-    PrototypeRoomDetails:{
-        screen:PrototypeRoomDetails,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
-            data:screenProps,
+    PrototypeRoomDetails: {
+        screen: PrototypeRoomDetails,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+            data: screenProps,
         })
     },
-    DesignListsView:{
-        screen:DesignListsView,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
+    DesignListsView: {
+        screen: DesignListsView,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
         })
     },
-    DesignDetailsView:{
-        screen:DesignDetailsView,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
+    DesignDetailsView: {
+        screen: DesignDetailsView,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
         })
     },
-    ImageViewer:{
-        screen:ImageViewer,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
-        })       
+    ImageViewer: {
+        screen: ImageViewer,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+        })
     },
-    VRDetails:{
-        screen:VRDetails,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
-        })       
+    VRDetails: {
+        screen: VRDetails,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+        })
     },
-    My:{
- 		screen:My,
-        navigationOptions:({navigation,screenProps}) => ({
-            header:null,
-            tabBarVisible:true, // 是否隐藏标签栏。默认不隐藏(true)
-            tabBarIcon: (({tintColor,focused}) => {
-                return(
-                    <Image
-                        source={!focused ? My_off : My_on}
-                        style={[{height:20,width:20 }, {tintColor: tintColor}]}
+    My: {
+        screen: My,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+            tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
+            tabBarIcon: (({ tintColor, focused }) => {
+                return ( <
+                    Image source = {!focused ? My_off : My_on } style = {
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
                     />
                 )
             }), // 设置标签栏的图标。需要单独设置。
-            tabBarLabel:'我的', // 设置标签栏的title。推荐这个方式。
-         })
+            tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
+        })
     },
-      Login: { screen: LoginPage },
-	  Main: { screen: MainPage},
-	  FormList: { screen: FormList},
-	  Register: { screen: Register}
+    AboutUs: {
+        screen: AboutUsPage,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            title:"关于我们",
+        })
+    },
+    Login: { screen: LoginPage },
+    Main: { screen: MainPage },
+    FormList: { screen: FormList },
+    Register: { screen: Register }
 
-},{
+}, {
 
 });
 
-const TabOptions = (tabBarTitle,normalImage,selectedImage,navTitle) => {
+const TabOptions = (tabBarTitle, normalImage, selectedImage, navTitle) => {
     // console.log(navigation);
     const tabBarLabel = tabBarTitle;
-    const tabBarIcon = (({tintColor,focused})=> {
-        return(
-            <Image
-                source={!focused ? normalImage : selectedImage}
-                style={[{height:20,width:20 }, {tintColor: tintColor}]}
+    const tabBarIcon = (({ tintColor, focused }) => {
+        return ( <
+            Image source = {!focused ? normalImage : selectedImage } style = {
+                [{ height: 20, width: 20 }, { tintColor: tintColor }] }
             />
         )
     });
     const headerTitle = navTitle;
-    const headerTitleStyle = {fontSize:16,color:'white',alignSelf:'center'};
+    const headerTitleStyle = { fontSize: 16, color: 'white', alignSelf: 'center' };
     // header的style
-    const headerStyle = {backgroundColor:'#4ECBFC'};
+    const headerStyle = { backgroundColor: '#4ECBFC' };
     const tabBarVisible = true;
     // const header = null;
-    return {tabBarLabel,tabBarIcon,headerTitle,headerTitleStyle,headerStyle,tabBarVisible};
+    return { tabBarLabel, tabBarIcon, headerTitle, headerTitleStyle, headerStyle, tabBarVisible };
 };
 
 export default MyNav;

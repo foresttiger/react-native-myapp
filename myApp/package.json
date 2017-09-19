@@ -5,7 +5,7 @@
 	"scripts": {
 		"start": "react-native start",
 		"test": "jest",
-		"bundle-ios":"node node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ./ios/bundle/index.ios.jsbundle --assets-dest ./ios/bundle"
+		"bundle-ios": "node node_modules/react-native/local-cli/cli.js bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ./ios/bundle/index.ios.jsbundle --assets-dest ./ios/bundle"
 	},
 	"dependencies": {
 		"react": "16.0.0-alpha.6",

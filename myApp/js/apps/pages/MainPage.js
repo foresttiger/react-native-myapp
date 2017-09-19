@@ -52,7 +52,10 @@ class MainPage extends Component {
       radio = 1
     }
   }
-
+   goAboutUs(){
+      const { navigate } = this.props.navigation;
+      navigate('AboutUs');
+    }
   
   logout() {
     const { loginOut } = this.props;
@@ -69,18 +72,8 @@ class MainPage extends Component {
     Alert("sdsadsad")
   }
   _cells(){
+    let _this = this;
     const options = [{"icon":"user-o","name":"我的客户"},{"icon":"bars","name":"我的订单"},{"icon":"star-o","name":"我的收藏"},{"icon":"info-circle","name":"关于"}]
-    // let cells = (i) => {options.map(function(n,i){
-    //     return(
-    //         <TouchableOpacity key={i} onPress={()=>{n.fun()}}>
-    //           <View>
-    //             <FontAwesomeIcon name={n.icon} size={30} color="#900" />
-    //             <Text >n.name</Text>
-    //           </View>
-    //         </TouchableOpacity>
-    //       )
-    //   })
-    // }
     return(
         <View>
            {options.map((item,i)=>{
@@ -89,12 +82,11 @@ class MainPage extends Component {
                   <FontAwesomeIcon name={item.icon} size={px2dp(20)*radio} color="rgba(0,0,0,0.4)" />
                   <Text style={[styles.cellName,{marginHorizontal: px2dp(13)*radio}]}>{item.name}</Text>
                   <FontAwesomeIcon name={"angle-right"} style={{position: 'absolute',right: px2dp(20)}} size={px2dp(20)*radio} color="rgba(0,0,0,0.4)" />
-
                 </View>
               )
               return (
                 isIOS?(
-                  <TouchableOpacity key={i} onPress={() => {}}>{render}</TouchableOpacity>
+                  <TouchableOpacity key={i} onPress={() => {_this.goAboutUs()}}>{render}</TouchableOpacity>
                 ):(
                   <TouchableOpacity style={{width: w, height: h}} key={i} onPress={() => {}}>{render}</TouchableOpacity>
                 )

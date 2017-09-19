@@ -50,8 +50,6 @@
 		DD25B4A859CA4B1E9E7D15AD /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6D4022A1CB7A4F5DAFED67A6 /* Foundation.ttf */; };
 		F10B0B11467D4AECBD47A99D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01399349CF2C49E59E4DCD7D /* MaterialIcons.ttf */; };
 		F1CE4CB25A1741DA8452A5A9 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD78A45CA579489FADE217D6 /* libRNVectorIcons.a */; };
-		F622FD401F5E834A0071EAB9 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
-		F622FD411F5E88240071EAB9 /* main.jsbundle.meta in Resources */ = {isa = PBXBuildFile; fileRef = F62A459C1F5D3764002E7A34 /* main.jsbundle.meta */; };
 		F62A459A1F5D35F4002E7A34 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = F62A45991F5D35F4002E7A34 /* assets */; };
 		F662D4981F5CF2FE00BB2B8B /* RCTHttpCache in Resources */ = {isa = PBXBuildFile; fileRef = F662D4971F5CF2FE00BB2B8B /* RCTHttpCache */; };
 /* End PBXBuildFile section */
@@ -292,7 +290,6 @@
 
 /* Begin PBXFileReference section */
 		0055B5A6DE7F42EFAFB59727 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -334,7 +331,6 @@
 		EBDFC4DADCBF4FCFB09996C0 /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
 		EF6609B9C51144E89110B2A8 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		F62A45991F5D35F4002E7A34 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
-		F62A459C1F5D3764002E7A34 /* main.jsbundle.meta */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle.meta; sourceTree = "<group>"; };
 		F662D4741F5CECD800BB2B8B /* RCTHttpCache.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTHttpCache.xcodeproj; path = "../node_modules/react-native-http-cache/ios/RCTHttpCache.xcodeproj"; sourceTree = "<group>"; };
 		F662D4971F5CF2FE00BB2B8B /* RCTHttpCache */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RCTHttpCache; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -475,9 +471,7 @@
 		13B07FAE1A68108700A75B9A /* myApp */ = {
 			isa = PBXGroup;
 			children = (
-				F62A459C1F5D3764002E7A34 /* main.jsbundle.meta */,
 				F62A45991F5D35F4002E7A34 /* assets */,
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -1060,8 +1054,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F622FD411F5E88240071EAB9 /* main.jsbundle.meta in Resources */,
-				F622FD401F5E834A0071EAB9 /* main.jsbundle in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				9C63D4764635407BB9C7AEF4 /* Entypo.ttf in Resources */,
@@ -1275,7 +1267,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nnhomekic;
 				PRODUCT_NAME = myApp;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1303,7 +1295,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nnhomekic;
 				PRODUCT_NAME = myApp;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
