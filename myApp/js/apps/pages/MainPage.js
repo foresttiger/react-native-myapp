@@ -41,7 +41,7 @@ class MainPage extends Component {
       }
   }
   static navigationOptions = {
-    title: 'MainPage',
+    title: '我的',
   };
   componentWillMount() {
     const initial = Orientation.getInitialOrientation();
@@ -52,17 +52,13 @@ class MainPage extends Component {
       radio = 1
     }
   }
-   goAboutUs(){
+  goAboutUs(){
       const { navigate } = this.props.navigation;
       navigate('AboutUs');
     }
-  
-  logout() {
-    const { loginOut } = this.props;
-    loginOut();
-    this.props.callback(false);
-    this.props.navigation.goBack();
-    // this.props.navigation.dispatch(resetAction)
+  goSetting(){
+    const {navigate} = this.props.navigation;
+    navigate("Setting");
   }
   Form() {
     const {navigate} = this.props.navigation;
@@ -78,17 +74,17 @@ class MainPage extends Component {
         <View>
            {options.map((item,i)=>{
               let render = (
-                <View style={[styles.cellItem,{height: px2dp(60)*radio,paddingHorizontal: px2dp(30)*radio,}]}>
+                <View style={[styles.cellItem,{height: px2dp(60)*radio,paddingHorizontal: px2dp(20)*radio,}]}>
                   <FontAwesomeIcon name={item.icon} size={px2dp(20)*radio} color="rgba(0,0,0,0.4)" />
                   <Text style={[styles.cellName,{marginHorizontal: px2dp(13)*radio}]}>{item.name}</Text>
-                  <FontAwesomeIcon name={"angle-right"} style={{position: 'absolute',right: px2dp(20)}} size={px2dp(20)*radio} color="rgba(0,0,0,0.4)" />
+                  <FontAwesomeIcon name={"angle-right"} style={{position: 'absolute',right: px2dp(20)*radio}} size={px2dp(20)*radio} color="rgba(0,0,0,0.4)" />
                 </View>
               )
               return (
                 isIOS?(
-                  <TouchableOpacity key={i} onPress={() => {_this.goAboutUs()}}>{render}</TouchableOpacity>
+                  <TouchableOpacity key={i} onPress={() => {}}>{render}</TouchableOpacity>
                 ):(
-                  <TouchableOpacity style={{width: w, height: h}} key={i} onPress={() => {}}>{render}</TouchableOpacity>
+                  <TouchableOpacity key={i} onPress={() => {}}>{render}</TouchableOpacity>
                 )
               )
             })
@@ -103,6 +99,9 @@ class MainPage extends Component {
       <View style={styles.container}>
         <NavBar
           title="我的"
+          rightIcon="ios-settings-outline"
+          rightPress={this.goSetting.bind(this)}
+          // leftPress={this.back.bind(this)}ios-arrow-back
         />
         <TouchableOpacity onPress={this.Form.bind(this)}>
           <View style={[styles.user,{height:px2dp(90)*radio}]}>
@@ -146,9 +145,9 @@ class MainPage extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderColor: '#cccccc',
+    backgroundColor: '#f3f3f3',
+    // borderBottomWidth: 0.5,
+    // borderColor: 'rgba(0,0,0,0.05)',
   },
   user:{
     flexDirection: 'row',
@@ -164,7 +163,7 @@ const styles = StyleSheet.create({
   },
   userItem:{
     fontSize: px2dp(14),
-    margin:px2dp(3),
+    margin:px2dp(2),
     color:'#ffffff',
   },
   cellStyles:{
@@ -175,11 +174,12 @@ const styles = StyleSheet.create({
   cellItem:{
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.02)',
-    borderBottomWidth: 0.5,
+    backgroundColor: '#ffffff',
+    // borderBottomWidth: 1,
     // borderStyle: 'dotted',
     // borderStyle: 'dashed', 
-    borderColor: 'rgba(0,0,0,0.1)',
+    marginVertical: px2dp(1),
+    // borderColor: 'rgba(0,0,0,0.1)',
   },
   cellName:{
     color:'rgba(0,0,0,0.7)',
@@ -192,8 +192,8 @@ export default connect(
     count: state.counter.count,
   }),
   (dispatch) => ({
-    incrementFn: () => dispatch(counterAction.increment()),
-    decrementFn: () => dispatch(counterAction.decrement()),
-    loginOut: () => dispatch(loginAction.loginOut()),
+    // incrementFn: () => dispatch(counterAction.increment()),
+    // decrementFn: () => dispatch(counterAction.decrement()),
+    // loginOut: () => dispatch(loginAction.loginOut()),
   })
 )(MainPage)

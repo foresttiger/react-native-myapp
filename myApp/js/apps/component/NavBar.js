@@ -36,13 +36,13 @@ export default class NavBar extends Component{
         if(Platform.OS === 'android'){
           return (
             <TouchableNativeFeedback onPress={onPress} style={styles.btn}>
-              <Icon name={name} size={px2dp(26)} color="#fff" />
+              <Icon name={name} size={px2dp(22)} color="#fff" />
             </TouchableNativeFeedback>
           )
         }else{
           return (
             <TouchableOpacity onPress={onPress} style={styles.btn}>
-              <Icon name={name} size={px2dp(26)} color="#fff" />
+              <Icon name={name} size={px2dp(22)} color="#fff" />
             </TouchableOpacity>
           )
         }
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: px2dp(10)
     },
     btn: {
-      width: 40,
-      height: 40,
+      // width: 40,
+      // height: 40,
       justifyContent: 'center',
       alignItems: 'center'
     },

@@ -41,6 +41,8 @@ import FormList from '../apps/pages/Form'
 import Register from '../apps/pages/Register'
 //关于我们
 import AboutUsPage from '../apps/pages/AboutUs'
+//设置
+import Setting from '../apps/pages/Setting'
 
 
 
@@ -94,7 +96,8 @@ const MyTab = TabNavigator({
             tabBarIcon: (({ tintColor, focused }) => {
                 return ( <
                     Image source = {!focused ? Home_off : Home_on } style = {
-                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }]
+                    }
                     />
                 )
             }), // 设置标签栏的图标。需要单独设置。
@@ -109,7 +112,8 @@ const MyTab = TabNavigator({
             tabBarIcon: (({ tintColor, focused }) => {
                 return ( <
                     Image source = {!focused ? Discover_off : Discover_on } style = {
-                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }]
+                    }
                     />
                 )
             }), // 设置标签栏的图标。需要单独设置。
@@ -143,7 +147,8 @@ const MyTab = TabNavigator({
             tabBarIcon: (({ tintColor, focused }) => {
                 return ( <
                     Image source = {!focused ? My_off : My_on } style = {
-                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }]
+                    }
                     />
                 )
             }), // 设置标签栏的图标。需要单独设置。
@@ -201,6 +206,9 @@ const MyNav = StackNavigator({
         screen: MyTab,
 
     },
+    Home: { screen: MyTab, path: 'app/Home' },
+    Discover: { screen: MyTab, path: 'app/Discover' },
+    My: { screen: MyTab, path: 'app/My' },
     // 将需要跳转的页面注册在这里，全局才可以跳转
     // Detail1:{
     //     screen:Detail1
@@ -239,29 +247,37 @@ const MyNav = StackNavigator({
             header: null,
         })
     },
-    My: {
-        screen: My,
+    // My: {
+    //     screen: My,
+    //     navigationOptions: ({ navigation, screenProps }) => ({
+    //         header: null,
+    //         tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
+    //         tabBarIcon: (({ tintColor, focused }) => {
+    //             return ( <
+    //                 Image source = {!focused ? My_off : My_on } style = {
+    //                     [{ height: 20, width: 20 }, { tintColor: tintColor }] }
+    //                 />
+    //             )
+    //         }), // 设置标签栏的图标。需要单独设置。
+    //         tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
+    //     })
+    // },
+    AboutUs: {
+        screen: AboutUsPage
+    },
+    Setting: {
+        screen: Setting,
         navigationOptions: ({ navigation, screenProps }) => ({
             header: null,
-            tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
-            tabBarIcon: (({ tintColor, focused }) => {
-                return ( <
-                    Image source = {!focused ? My_off : My_on } style = {
-                        [{ height: 20, width: 20 }, { tintColor: tintColor }] }
-                    />
-                )
-            }), // 设置标签栏的图标。需要单独设置。
-            tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
-        })
-    },
-    AboutUs: {
-        screen: AboutUsPage,
-        navigationOptions: ({ navigation, screenProps }) => ({
-            title:"关于我们",
         })
     },
     Login: { screen: LoginPage },
-    Main: { screen: MainPage },
+    Main: {
+        screen: MainPage,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            title: "我的",
+        })
+    },
     FormList: { screen: FormList },
     Register: { screen: Register }
 
@@ -275,7 +291,8 @@ const TabOptions = (tabBarTitle, normalImage, selectedImage, navTitle) => {
     const tabBarIcon = (({ tintColor, focused }) => {
         return ( <
             Image source = {!focused ? normalImage : selectedImage } style = {
-                [{ height: 20, width: 20 }, { tintColor: tintColor }] }
+                [{ height: 20, width: 20 }, { tintColor: tintColor }]
+            }
             />
         )
     });

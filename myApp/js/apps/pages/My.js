@@ -45,6 +45,9 @@ class My extends Component {
         loginData:{}
       }
   }
+  static navigationOptions = {
+    title: '我的',
+  };
   _loginOut(){
      const { loginOut } = this.props;
       loginOut()

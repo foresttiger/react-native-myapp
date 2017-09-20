@@ -76,7 +76,7 @@ class FormList extends Component {
   }
 
   static navigationOptions = {
-    title: '表单',
+    title: '表单2',
   };
   
   logout() {

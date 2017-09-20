@@ -556,6 +556,7 @@
 				00E356EF1AD99517003FC87E /* myAppTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				B976D6E2B0EB4F63A2BBB013 /* Resources */,
+				F6B6A7731F724ED30017B170 /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -628,6 +629,17 @@
 				F662D47D1F5CECD800BB2B8B /* libRCTHttpCache.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F6B6A7731F724ED30017B170 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				AD78A45CA579489FADE217D6 /* libRNVectorIcons.a */,
+				E76940B486A9425C9A1135D7 /* libRCTVideo.a */,
+				168BEE0A18894E03990C34C9 /* libRNFetchBlob.a */,
+				EBDFC4DADCBF4FCFB09996C0 /* libRCTOrientation.a */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1267,7 +1279,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nnhomekic;
 				PRODUCT_NAME = myApp;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = 2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1295,7 +1307,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nnhomekic;
 				PRODUCT_NAME = myApp;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = 2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

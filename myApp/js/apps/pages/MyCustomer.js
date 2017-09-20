@@ -31,7 +31,7 @@ const resetAction = NavigationActions.reset({
   ]
 })
 
-class AboutUs extends Component {
+class MyCustomer extends Component {
 
   constructor(props){
       super(props)
@@ -41,7 +41,7 @@ class AboutUs extends Component {
       }
   }
   static navigationOptions = {
-    title: '关于我们',
+    title: '我的客户',
     headerStyle:{
       backgroundColor: '#c0a354'
     },
@@ -141,4 +141,4 @@ export default connect(
   (dispatch) => ({
     loginOut: () => dispatch(loginAction.loginOut()),
   })
-)(AboutUs)
+)(MyCustomer)
