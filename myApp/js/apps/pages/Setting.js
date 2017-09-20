@@ -50,12 +50,15 @@ class Setting extends Component {
           leftIcon="ios-arrow-back"
           leftPress={this.back.bind(this)}
         />
-        <ScrollView>
+        <ScrollView
+          scrollEnabled={false}
+        >
          {/* <Item name="账户安全" first={true} onPress={this.goProfile.bind(this)}/>*/}
           <Item name="通用"/>
           {/*<Item name="关于饿了么" first={true}/>*/}
-          <Item.Button name="退出登录" onPress={this.logout.bind(this)} first={true}/>
+          
         </ScrollView>
+        <Item.Button name="退出登录" color={'#c0a354'} onPress={this.logout.bind(this)} first={true}/>
       </View>
     )
   }
