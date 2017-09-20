@@ -67,9 +67,26 @@ class MainPage extends Component {
   _alert(){
     Alert("sdsadsad")
   }
+  _cellFun(name){
+    switch(name){
+      case "我的客户":
+        console.log(name)
+        break;
+      case "我的订单":
+        console.log(name)
+        break;
+      case "我的收藏":
+        console.log(name)
+        break;
+      case "关于KIC·德国厨房":
+        this.goAboutUs();
+        // console.log(name)
+        break;
+    }
+  }
   _cells(){
     let _this = this;
-    const options = [{"icon":"user-o","name":"我的客户"},{"icon":"bars","name":"我的订单"},{"icon":"star-o","name":"我的收藏"},{"icon":"info-circle","name":"关于"}]
+    const options = [{"icon":"user-o","name":"我的客户"},{"icon":"bars","name":"我的订单"},{"icon":"star-o","name":"我的收藏"},{"icon":"info-circle","name":"关于KIC·德国厨房"}]
     return(
         <View>
            {options.map((item,i)=>{
@@ -82,9 +99,9 @@ class MainPage extends Component {
               )
               return (
                 isIOS?(
-                  <TouchableOpacity key={i} onPress={() => {}}>{render}</TouchableOpacity>
+                  <TouchableOpacity key={i} onPress={() => {_this._cellFun(item.name)}}>{render}</TouchableOpacity>
                 ):(
-                  <TouchableOpacity key={i} onPress={() => {}}>{render}</TouchableOpacity>
+                  <TouchableOpacity key={i} onPress={() => {_this._cellFun(item.name)}}>{render}</TouchableOpacity>
                 )
               )
             })
@@ -103,7 +120,7 @@ class MainPage extends Component {
           rightPress={this.goSetting.bind(this)}
           // leftPress={this.back.bind(this)}ios-arrow-back
         />
-        <TouchableOpacity onPress={this.Form.bind(this)}>
+        {/*<TouchableOpacity onPress={this.Form.bind(this)}>*/}
           <View style={[styles.user,{height:px2dp(90)*radio}]}>
             <View style={styles.headImg}>
               <Image
@@ -117,7 +134,7 @@ class MainPage extends Component {
               <Text style={styles.userItem}>{this.state.phone}</Text>
             </View>
           </View>
-        </TouchableOpacity>
+        {/*</TouchableOpacity>*/}
         <View style={styles.cellStyles}>
            {this._cells()}
         </View>

@@ -41,7 +41,7 @@ class AboutUs extends Component {
       }
   }
   static navigationOptions = {
-    title: '关于我们',
+    title: '关于 KIC·德国厨房',
     headerStyle:{
       backgroundColor: '#c0a354'
     },
@@ -54,9 +54,9 @@ class AboutUs extends Component {
     const initial = Orientation.getInitialOrientation();
     if (initial === 'PORTRAIT') {
       // do something
-      radio = 0.8
-    } else {
       radio = 1
+    } else {
+      radio = 0.55
     }
   }
 
@@ -75,16 +75,19 @@ class AboutUs extends Component {
     const { count, incrementFn, decrementFn,loginOut } = this.props;
     return(
       <View style={styles.container}>
-	      <TouchableOpacity onPress={this.logout.bind(this)} style={{marginTop: 50}}>
-	          <View>
-	            <Text>退出登录
-	            </Text>
-	          </View>
-	        </TouchableOpacity>
-        <TouchableOpacity onPress={this.goAboutUs.bind(this)} style={{marginTop: 50}}>
-           <Text>表单
-              </Text>
-        </TouchableOpacity>
+        <Image
+          style={{width: px2dp(60),height: px2dp(60),marginBottom: px2dp(5),marginTop: -px2dp(150)}}
+          source={LocalImg["usr"]}
+        />
+        <Text style={{marginBottom: px2dp(20),fontSize: px2dp(12)}}>版本信息：1.0.0</Text>
+        <View style={{width:0.9*width*radio}}> 
+          <Text style={styles.textStyle}>赫曼德·3D云设计——极简超快的家装VR设计工具，酷炫专业的设计促单神器。</Text>
+          <Text style={[styles.textStyle,{marginBottom: px2dp(20)}]}>云渲染720°全景漫游，VR沉浸式体验。</Text>
+          <Text style={styles.textStyle}>操作简单——无需安装，在线设计，海量图库，一键导入。</Text>
+          <Text style={styles.textStyle}>功能强大——快速设计，实时预览，预见未来的家。</Text>
+          <Text style={styles.textStyle}>效果惊艳——顶级渲染引擎，秒出效果图，超炫效果，VR全景虚拟体验。</Text>
+          <Text style={styles.textStyle}>专业智能——参数化设计，动态展示，风格引擎一键替换。</Text>
+        </View>
       </View>
     )
   }
@@ -93,44 +96,14 @@ class AboutUs extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderColor: '#cccccc',
+    backgroundColor: '#f3f3f3',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  user:{
-    flexDirection: 'row',
-    paddingHorizontal: px2dp(20),
-    alignItems:'center',
-    backgroundColor: '#c0a354',
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#c0a354',
-  },
-  headImg:{
-    marginRight: px2dp(10)
-  },
-  userItem:{
-    fontSize: px2dp(14),
-    margin:px2dp(3),
-    color:'#ffffff',
-  },
-  cellStyles:{
-    // borderTopWidth: 1,
-    // borderStyle: 'solid',
-    // borderColor: 'rgba(0,0,0,0.15)',
-  },
-  cellItem:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.02)',
-    borderBottomWidth: 0.5,
-    // borderStyle: 'dotted',
-    // borderStyle: 'dashed', 
-    borderColor: 'rgba(0,0,0,0.1)',
-  },
-  cellName:{
-    color:'rgba(0,0,0,0.7)',
-    fontSize: px2dp(13),
+  textStyle:{
+    // width:0.9*width,
+    fontSize: px2dp(12),
+    marginVertical: px2dp(3)
   }
 })
 
