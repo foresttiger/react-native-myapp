@@ -41,6 +41,7 @@ import Permissions  from 'react-native-permissions'
 import Video from 'react-native-video';
 
 
+import CarouselView from '../component/CarouselView'
 import SearchView from '../component/SearchView'
 import LbsModal from '../component/LbsModal'
 import Bz from '../component/Bz'
@@ -484,6 +485,7 @@ export default class HomePage extends Component {
   render(){
     return (
       <View style={{flex: 1, backgroundColor: "#f3f3f3"}}>
+
         <ScrollView
           style={styles.scrollView}
           onScroll={Animated.event(
@@ -500,11 +502,13 @@ export default class HomePage extends Component {
             />
           }
         >
+          
           {this._renderHeader()}
-          <View style={{flex:1,backgroundColor: "#fff"}}>
+          <CarouselView />
+         {/* <View style={{flex:1,backgroundColor: "#fff"}}>
                {this._renderTypes()}
                       
-          </View>
+          </View>*/}
 
           <View style={styles.recom}>
               {this._renderHot()}
