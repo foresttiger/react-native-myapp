@@ -45,7 +45,7 @@ const data = [{
     phone: "10000000000",
     address: "上海市黄浦区金陵大厦17楼"
 }]
-
+let ds = new ListView.DataSource({rowHasChanged:(row1, row2) => row1 !== row2});
 class MyCustomer extends Component {
 
   constructor(props){
@@ -53,24 +53,39 @@ class MyCustomer extends Component {
       super(props)
 
       this.state = {
-        dataSource:ds.cloneWithRows(data)
+        dataSource:ds.cloneWithRows(data),
+        rows: data
       }
   }
-  static navigationOptions = {
-    title: '我的客户',
-    headerStyle:{
-      backgroundColor: '#c0a354'
-    },
-    headerBackTitleStyle:{
-      color:'#ffffff'
-    },
-    headerTintColor:'#ffffff',
-    headerRight:(  
-            <TouchableOpacity onPress={()=>{}} style={{marginRight:px2dp(10), width:30}} >  
-                <Icon name='md-add' size={px2dp(20)} color='#ffffff' />  
-            </TouchableOpacity>  
-        )  
-  };
+  static navigationOptions = ({ navigation, screenProps }) => ({
+      title: '我的客户',
+      headerStyle: {
+          backgroundColor: '#c0a354'
+      },
+      headerBackTitleStyle: {
+          color: '#ffffff'
+      },
+      headerTintColor: '#ffffff',
+      headerRight: (
+            <Text  onPress={navigation.state.params&&navigation.state.params.navigatePress.bind(this)} style={{marginLeft:5, width:30, textAlign:"center"}} >  
+                <Icon name='md-add' size={px2dp(20)} color='#ffffff' /> 
+            </Text>  
+        )
+  }); 
+   componentDidMount(){  
+      //在static中使用this方法  
+      this.props.navigation.setParams({ navigatePress:this._addAdress })  
+  }  
+  _deleteRow(rowID) {
+    this.state.rows.splice(rowID, 1)
+    this.setState({
+      dataSource: ds.cloneWithRows( this.state.rows ),
+    })
+  }
+  _addAdress = () => {
+    const { navigate } = this.props.navigation;
+    navigate('AddCustomer');
+  }
   componentWillMount() {
     const initial = Orientation.getInitialOrientation();
     if (initial === 'PORTRAIT') {
@@ -81,7 +96,7 @@ class MyCustomer extends Component {
     }
   }
    // 具体的cell
-  renderRow(rowdata){
+  renderRow(rowdata, sectionID, rowID){
     return(
         <View style={styles.cellStyles}>
             <Text style={styles.name}>{rowdata.name}</Text>
@@ -89,7 +104,7 @@ class MyCustomer extends Component {
               <Text style={styles.phone}>{rowdata.phone}</Text>
               <Text style={styles.address}>{rowdata.address}</Text>
             </View>
-            <TouchableOpacity style={styles.del}>
+            <TouchableOpacity style={styles.del} onPress={()=>{this._deleteRow(rowID)}}>
                 <FontAwesomeIcon name={"trash-o"} size={px2dp(20)} color="rgba(0,0,0,0.4)" />
             </TouchableOpacity>
         </View>
@@ -99,7 +114,7 @@ class MyCustomer extends Component {
     return(
             <ListView
                 dataSource={this.state.dataSource}
-                renderRow={this.renderRow}
+                renderRow={this.renderRow.bind(this)}
                 contentContainerStyle={styles.contentViewStyle}
                 scrollEnabled={false}
             />

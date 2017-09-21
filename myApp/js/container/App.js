@@ -45,7 +45,10 @@ import AboutUsPage from '../apps/pages/AboutUs'
 import Setting from '../apps/pages/Setting'
 //我的客户
 import MyCustomer from '../apps/pages/MyCustomer'
-
+//增加地址
+import Address from '../apps/pages/Address'
+import EditAddress from '../apps/pages/EditAddress'
+import AddCustomer from '../apps/pages/AddCustomer'
 
 // import OnLineYun from './Test1.js';
 // import Test1 from './Test1.js';
@@ -303,7 +306,10 @@ const MyNav = StackNavigator({
         })
     },
     FormList: { screen: FormList },
-    Register: { screen: Register }
+    Register: { screen: Register },
+    Address: { screen: Address },
+    EditAddress: { screen: EditAddress },
+    AddCustomer:{ screen: AddCustomer },
 
 }, {
 
