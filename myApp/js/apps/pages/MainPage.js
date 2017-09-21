@@ -43,6 +43,7 @@ class MainPage extends Component {
   static navigationOptions = {
     title: '我的',
   };
+  
   componentWillMount() {
     const initial = Orientation.getInitialOrientation();
     if (initial === 'PORTRAIT') {
@@ -56,6 +57,10 @@ class MainPage extends Component {
       const { navigate } = this.props.navigation;
       navigate('AboutUs');
     }
+  goMyCustomer(){
+      const { navigate } = this.props.navigation;
+      navigate('MyCustomer');
+  }
   goSetting(){
     const {navigate} = this.props.navigation;
     navigate("Setting");
@@ -70,6 +75,7 @@ class MainPage extends Component {
   _cellFun(name){
     switch(name){
       case "我的客户":
+        this.goMyCustomer();
         console.log(name)
         break;
       case "我的订单":

@@ -43,7 +43,8 @@ import Register from '../apps/pages/Register'
 import AboutUsPage from '../apps/pages/AboutUs'
 //设置
 import Setting from '../apps/pages/Setting'
-
+//我的客户
+import MyCustomer from '../apps/pages/MyCustomer'
 
 
 // import OnLineYun from './Test1.js';
@@ -88,6 +89,24 @@ const isIos = Platform.OS == "ios"
 
 
 const MyTab = TabNavigator({
+    My: {
+        screen: My,
+        // screen:LoginPage,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+            tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
+            tabBarIcon: (({ tintColor, focused }) => {
+                return ( <
+                    Image source = {!focused ? My_off : My_on } style = {
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }]
+                    }
+                    />
+                )
+            }), // 设置标签栏的图标。需要单独设置。
+            tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
+        })
+        // navigationOptions: ()=> TabOptions('我的',My_off,My_on,'我的'),
+    },
     Home: {
         screen: Home,
         navigationOptions: ({ navigation, screenProps }) => ({
@@ -204,7 +223,6 @@ const MyNav = StackNavigator({
     //第一个为初始页面
     MyTab: {
         screen: MyTab,
-
     },
     Home: { screen: MyTab, path: 'app/Home' },
     Discover: { screen: MyTab, path: 'app/Discover' },
@@ -265,10 +283,16 @@ const MyNav = StackNavigator({
     AboutUs: {
         screen: AboutUsPage
     },
+    MyCustomer: {
+        screen: MyCustomer,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            title: "我的客户",
+        })
+    },
     Setting: {
         screen: Setting,
         navigationOptions: ({ navigation, screenProps }) => ({
-            header: null,
+            title: '设置',
         })
     },
     Login: { screen: LoginPage },

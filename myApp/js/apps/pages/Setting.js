@@ -28,9 +28,20 @@ class Setting extends Component {
   constructor(props){
       super(props)
   }
+  static navigationOptions = {
+    title: '设置',
+    headerStyle:{
+      backgroundColor: '#c0a354'
+    },
+    headerBackTitleStyle:{
+      color:'#ffffff'
+    },
+    headerTintColor:'#ffffff', 
+  };
   back(){
    this.props.navigation.goBack();
   }
+
   goProfile(){
     this.props.navigator.push({
         component: UserProfile,
@@ -45,11 +56,12 @@ class Setting extends Component {
   render(){
     return (
       <View style={{flex: 1, backgroundColor: "#f3f3f3"}}>
-        <NavBar
+{/*        <NavBar
           title="设置"
           leftIcon="ios-arrow-back"
           leftPress={this.back.bind(this)}
-        />
+        />*/}
+
         <ScrollView
           scrollEnabled={false}
         >

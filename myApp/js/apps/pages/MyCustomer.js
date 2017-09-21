@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
-  Image
+  Image,
+  ListView
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import Orientation from 'react-native-orientation';
 import NavBar from '../component/NavBar'
@@ -30,14 +32,28 @@ const resetAction = NavigationActions.reset({
     NavigationActions.navigate({ routeName: 'MyTab'})
   ]
 })
+const data = [{
+    name: '张三',
+    phone: "10000000000",
+    address: "上海市黄浦区金陵大厦17楼"
+}, {
+    name: '张三',
+    phone: "10000000000",
+    address: "上海市黄浦区金陵大上海市黄浦区金陵大厦17楼厦17楼"
+}, {
+    name: '张三',
+    phone: "10000000000",
+    address: "上海市黄浦区金陵大厦17楼"
+}]
 
 class MyCustomer extends Component {
 
   constructor(props){
+      var ds = new ListView.DataSource({rowHasChanged:(row1, row2) => row1 !== row2});
       super(props)
+
       this.state = {
-        name: "佘山",
-        phone: "1892379837987",
+        dataSource:ds.cloneWithRows(data)
       }
   }
   static navigationOptions = {
@@ -48,7 +64,12 @@ class MyCustomer extends Component {
     headerBackTitleStyle:{
       color:'#ffffff'
     },
-    headerTintColor:'#ffffff'
+    headerTintColor:'#ffffff',
+    headerRight:(  
+            <TouchableOpacity onPress={()=>{}} style={{marginRight:px2dp(10), width:30}} >  
+                <Icon name='md-add' size={px2dp(20)} color='#ffffff' />  
+            </TouchableOpacity>  
+        )  
   };
   componentWillMount() {
     const initial = Orientation.getInitialOrientation();
@@ -59,79 +80,78 @@ class MyCustomer extends Component {
       radio = 1
     }
   }
-
-     goAboutUs(){
-      const { navigate } = this.props.navigation;
-      navigate('FormList');
-    }
-  logout() {
-    const { loginOut } = this.props;
-    loginOut();
-    // this.props.navigation.goBack();
-    this.props.navigation.dispatch(resetAction)
+   // 具体的cell
+  renderRow(rowdata){
+    return(
+        <View style={styles.cellStyles}>
+            <Text style={styles.name}>{rowdata.name}</Text>
+            <View style={styles.content}>
+              <Text style={styles.phone}>{rowdata.phone}</Text>
+              <Text style={styles.address}>{rowdata.address}</Text>
+            </View>
+            <TouchableOpacity style={styles.del}>
+                <FontAwesomeIcon name={"trash-o"} size={px2dp(20)} color="rgba(0,0,0,0.4)" />
+            </TouchableOpacity>
+        </View>
+      )
+  }
+  _render(){
+    return(
+            <ListView
+                dataSource={this.state.dataSource}
+                renderRow={this.renderRow}
+                contentContainerStyle={styles.contentViewStyle}
+                scrollEnabled={false}
+            />
+      )
   }
   render() {
     const { user } = this.props.navigation;
     const { count, incrementFn, decrementFn,loginOut } = this.props;
     return(
       <View style={styles.container}>
-	      <TouchableOpacity onPress={this.logout.bind(this)} style={{marginTop: 50}}>
-	          <View>
-	            <Text>退出登录
-	            </Text>
-	          </View>
-	        </TouchableOpacity>
-        <TouchableOpacity onPress={this.goAboutUs.bind(this)} style={{marginTop: 50}}>
-           <Text>表单
-              </Text>
-        </TouchableOpacity>
+	      {this._render()}
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    borderBottomWidth: 1,
-    borderColor: '#cccccc',
-  },
-  user:{
-    flexDirection: 'row',
-    paddingHorizontal: px2dp(20),
-    alignItems:'center',
-    backgroundColor: '#c0a354',
-    borderBottomWidth: 1,
-    borderStyle: 'solid',
-    borderColor: '#c0a354',
-  },
-  headImg:{
-    marginRight: px2dp(10)
-  },
-  userItem:{
-    fontSize: px2dp(14),
-    margin:px2dp(3),
-    color:'#ffffff',
-  },
-  cellStyles:{
-    // borderTopWidth: 1,
-    // borderStyle: 'solid',
-    // borderColor: 'rgba(0,0,0,0.15)',
-  },
-  cellItem:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.02)',
-    borderBottomWidth: 0.5,
-    // borderStyle: 'dotted',
-    // borderStyle: 'dashed', 
-    borderColor: 'rgba(0,0,0,0.1)',
-  },
-  cellName:{
-    color:'rgba(0,0,0,0.7)',
-    fontSize: px2dp(13),
-  }
+    container: {
+        flex: 1,
+        backgroundColor: '#f3f3f3',
+        borderBottomWidth: 1,
+        borderColor: '#cccccc',
+    },
+    contentViewStyle: {
+        flex:1,
+        // 设置主轴的方向
+        // flexDirection: 'row',
+    },
+    cellStyles: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        backgroundColor: '#FFFFFF',
+        height: px2dp(60),
+        marginVertical: 1,
+        // borderTopWidth: 1,
+        // borderStyle: 'solid',
+        // borderColor: 'rgba(0,0,0,0.15)',
+    },
+    content:{
+        width: width*0.70,
+        marginRight: width*0.05
+    },
+    name:{
+         width: width*0.15,
+         textAlign:  'center',
+         alignItems: 'center',
+    },
+    del:{
+        width: width*0.1,
+    }
+
 })
 
 export default connect(
