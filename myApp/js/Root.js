@@ -9,10 +9,11 @@ import App from './container/App';
 const store = configureStore();
 const isIOS = Platform.OS == "ios"
 
-global.__APP__ = false;
 global.__ANDROID__ = !isIOS;
 global.__IOS__ = isIOS;  
-global.__PAD__ = true;  
+global.__PAD__ = false;
+global.__APP__ = true;
+
 export default class myApp extends Component {
 	componentWillMount() {
 		/*锁定只允许横屏*/
@@ -23,7 +24,7 @@ export default class myApp extends Component {
          Orientation.lockToLandscape();
       }
       if(__APP__){
-         Orientation.lockToLandscape();
+         Orientation.lockToPortrait();
       }
       console.log(__ANDROID__)
       console.log(__IOS__)
