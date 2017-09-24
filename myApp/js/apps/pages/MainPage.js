@@ -116,6 +116,7 @@ class MainPage extends Component {
       )
   }
   render() {
+    console.log(__IOS__)
     const { user } = this.props.navigation;
     const { count, incrementFn, decrementFn,loginOut } = this.props;
     return(
