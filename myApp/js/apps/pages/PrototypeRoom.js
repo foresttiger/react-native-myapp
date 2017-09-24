@@ -29,6 +29,8 @@ import Modal from 'react-native-modal'
 import Image from 'react-native-image-progress'
 // import * as Progress from 'react-native-progress'
 import Progress from 'react-native-progress'
+import Orientation from 'react-native-orientation';
+
 import {
   Menu,
   MenuOptions,
@@ -50,6 +52,8 @@ const isAndroid = Platform.OS != "ios"
 const { width, height } = Dimensions.get('window')
 const ImgWidth = width * 0.5 - px2dp(10);
 const ImgHeight = ImgWidth * 0.8;
+let isLANDSCAPE=false;
+
 //列表组件
 class Item extends Component {
   constructor(props){
@@ -116,7 +120,7 @@ class Item extends Component {
     // this._loaderDesignDatas()
     const { productId } = this.props.data
     let render = (
-      <View style={styles.itemsStyle}>
+      <View style={[styles.itemsStyle,{marginLeft:isLANDSCAPE?px2dp(20)/ 3:0}]}>
           <Image
             indicator={Progress}
             defaultSource={LocalImg['back']}
@@ -219,7 +223,25 @@ export default class PrototypeRoom extends Component {
     //    this._InitSearchData();
     //  }
   }
-
+  componentWillMount() {
+    const initial = Orientation.getInitialOrientation();
+    if (initial === 'PORTRAIT') {
+      // do something
+      this.setState({
+        initial:"PORTRAIT",
+        loginBack:"loginBack"
+      })
+      isLANDSCAPE = false
+      ImgWidth = width;
+      ImgHeight =  ImgWidth * 0.8
+    } else {
+      isLANDSCAPE = true
+      this.setState({
+        initial:"LANDSCAPE",
+        loginBack:"loginBackPad"
+      })
+    }
+  }
   componentDidMount() {
       var _this = this;
       // if (isnetwork) {

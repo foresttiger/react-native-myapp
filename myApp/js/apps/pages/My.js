@@ -60,7 +60,7 @@ class My extends Component {
     storage.load({
         key: "login",
     }).then(read => {
-         this.setState({ login: true });
+         this.setState({ login: true,user:{name:read.name} });
     }).catch(err => {
         console.log(err)
         // 如果没有找到数据且没有sync方法，
@@ -87,7 +87,7 @@ class My extends Component {
     if (isLogin) {
       return (
             <View  style={{flex:1}}>
-                <MainPage {...this.props} {...obj}/>
+                <MainPage {...this.props} {...this.state} {...obj}/>
             </View>
           )
     }else{

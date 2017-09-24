@@ -25,6 +25,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import Image from 'react-native-image-progress'
 // import * as Progress from 'react-native-progress'
 import Progress from 'react-native-progress'
+import Orientation from 'react-native-orientation';
 
 import LocalImg from '../images'
 import px2dp from '../util'
@@ -43,6 +44,7 @@ const isAndroid = Platform.OS != "ios"
 const { width, height } = Dimensions.get('window')
 const ImgWidth = width * 0.5 - px2dp(10);
 const ImgHeight = ImgWidth * 0.8;
+let isLANDSCAPE=false;
 
 //列表组件
 class Item extends Component {
@@ -68,7 +70,7 @@ class Item extends Component {
     }
     // console.log(jobId)
     let render = (
-      <View style={styles.itemsStyle}>
+      <View style={[styles.itemsStyle,{marginLeft:isLANDSCAPE?px2dp(20)/ 3:0}]}>
           <Image
             defaultSource={LocalImg['back']}
             indicator={Progress}
@@ -146,6 +148,25 @@ export default class VRList extends Component {
     this._loadData(viewIndex)
     this.setState({isRefreshing: true});
   }
+  componentWillMount() {
+    const initial = Orientation.getInitialOrientation();
+    if (initial === 'PORTRAIT') {
+      // do something
+      this.setState({
+        initial:"PORTRAIT",
+        loginBack:"loginBack"
+      })
+      isLANDSCAPE = false
+      ImgWidth = width;
+      ImgHeight =  ImgWidth * 0.8
+    } else {
+      isLANDSCAPE = true
+      this.setState({
+        initial:"LANDSCAPE",
+        loginBack:"loginBackPad"
+      })
+    }
+  }  
   componentDidMount() {
       var _this = this;
       this._loadData(0)

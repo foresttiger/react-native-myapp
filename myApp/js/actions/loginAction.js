@@ -40,7 +40,7 @@ export function login(obj) {
                         Object.assign(obj, { key: "login" })
                         console.log(obj)
                         storageSave(obj)
-                        dispatch(loginSuccess(true, user));
+                        dispatch(loginSuccess(true, obj));
                         break;
                     case "user_no_auth":
                         dispatch(loginError(false,res.message));
@@ -93,11 +93,11 @@ function isLogining() {
     }
 }
 
-function loginSuccess(isSuccess, user) {
+function loginSuccess(isSuccess, objects) {
     console.log('success');
     return {
         type: types.LOGIN_IN_DONE,
-        user: user,
+        user: objects,
     }
 }
 

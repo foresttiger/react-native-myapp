@@ -36,8 +36,8 @@ class MainPage extends Component {
   constructor(props){
       super(props)
       this.state = {
-        name: "佘山",
-        phone: "1892379837987",
+        name: props.user.name||"佘山",
+        phone: props.user.phone||"1892379837987",
       }
   }
   static navigationOptions = {
