@@ -18,6 +18,7 @@ import Orientation from 'react-native-orientation';
 import {TextInputLayout} from 'rn-textinputlayout';
 import { connect } from 'react-redux'; // 引入connect函数
 import { NavigationActions } from 'react-navigation';
+import LoadingModel from '../component/loadingModel'
 
 import px2dp from '../util'
 import LocalImg from '../images'
@@ -115,6 +116,14 @@ class LoginPage extends Component {
           name: this.state.username,
           pwd: this.state.password
       }
+      let dataObj = {
+          type: 'modelview',
+          name: "正在登录...",
+          animationIn: "slideInLeft",
+          animationOut: "slideOutLeft",
+          visibleModal: true,
+      }
+      this._renderModal(dataObj);
       login(obj)
   }
   showOrHide() {
@@ -128,7 +137,14 @@ class LoginPage extends Component {
       });
     }
   }
+  _renderModal(data){
+    var modelView = [];
+    var i =Math.floor(this.state.key) + 1;
+    modelView.push( <LoadingModel key={i}  data={data}/>);
+    this.setState({"ModelView":modelView,"key":i});
+  } 
  render() { 
+  let ModelView = this.state.ModelView;
   let _width = isLANDSCAPE?width*0.4:width*0.95;
   let _loginBack = this.state.loginBack;
   const { login } = this.props; 
@@ -184,7 +200,7 @@ class LoginPage extends Component {
           <Image source={LocalImg[_loginBack]} style={{width: width,height:height}}/>
         </View>
         {/* 切换显示或隐藏的按钮 */}
-        <TouchableOpacity underlayColor="#fff" style={styles.btn} onPress={
+        {/*<TouchableOpacity underlayColor="#fff" style={styles.btn} onPress={
           this.showOrHide.bind(this)}>
             <Text style={{color:'#fff', fontSize: 20}}>显示/隐藏</Text>
         </TouchableOpacity>
@@ -196,7 +212,8 @@ class LoginPage extends Component {
           animating={this.state.animating}
           size="large"
           color='#c0a354'
-          />
+          />*/}
+         {ModelView}
     </View>
 )}} 
 

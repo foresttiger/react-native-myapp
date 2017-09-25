@@ -125,7 +125,7 @@ const MyTab = TabNavigator({
         })
         // navigationOptions: ()=> TabOptions('我的',MainIcon,MainIcon,'我的'),
     },
-    /*OnLineYun:{
+    OnLineYun:{
         screen:OnLineYun,
         navigationOptions:({navigation,screenProps}) => ({
             header:null,
@@ -141,25 +141,25 @@ const MyTab = TabNavigator({
             tabBarLabel:'云设计', // 设置标签栏的title。推荐这个方式。
          })
         // navigationOptions: ()=> TabOptions('云设计',Onlineyun_off,Onlineyun_on,'云设计'),
-    },*/
-    // My: {
-    //     screen: My,
-    //     // screen:LoginPage,
-    //     navigationOptions: ({ navigation, screenProps }) => ({
-    //         header: null,
-    //         tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
-    //         tabBarIcon: (({ tintColor, focused }) => {
-    //             return ( <
-    //                 Image source = {!focused ? My_off : My_on } style = {
-    //                     [{ height: 20, width: 20 }, { tintColor: tintColor }]
-    //                 }
-    //                 />
-    //             )
-    //         }), // 设置标签栏的图标。需要单独设置。
-    //         tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
-    //     })
-    //     // navigationOptions: ()=> TabOptions('我的',My_off,My_on,'我的'),
-    // }
+    },
+    My: {
+        screen: My,
+        // screen:LoginPage,
+        navigationOptions: ({ navigation, screenProps }) => ({
+            header: null,
+            tabBarVisible: true, // 是否隐藏标签栏。默认不隐藏(true)
+            tabBarIcon: (({ tintColor, focused }) => {
+                return ( <
+                    Image source = {!focused ? My_off : My_on } style = {
+                        [{ height: 20, width: 20 }, { tintColor: tintColor }]
+                    }
+                    />
+                )
+            }), // 设置标签栏的图标。需要单独设置。
+            tabBarLabel: '我的', // 设置标签栏的title。推荐这个方式。
+        })
+        // navigationOptions: ()=> TabOptions('我的',My_off,My_on,'我的'),
+    }
 }, {
     tabBarPosition: 'bottom', // 设置tabbar的位置，iOS默认在底部，安卓默认在顶部。（属性值：'top'，'bottom')
     swipeEnabled: false, // 是否允许在标签之间进行滑动。

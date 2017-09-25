@@ -167,7 +167,7 @@ export default class HomePage extends Component {
       outputRange: [1, 1, 0]
     })
     return (
-      <View style={[styles.header,{paddingTop: __APP__?40:10,paddingBottom:0}]}>
+      <View style={[styles.header,{paddingTop: __APP__?10:40,paddingBottom:0}]}>
         <Animated.View style={[styles.lbsWeather, {opacity: lbsOpaticy,alignItems:"flex-start"}]}>
           {/*<Image
             style={{width:310,height: 40}}
