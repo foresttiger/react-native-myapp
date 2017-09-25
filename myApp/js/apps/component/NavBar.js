@@ -14,6 +14,7 @@ import {
   Text,
   Animated,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   TouchableNativeFeedback,
   Platform
 } from 'react-native'
@@ -41,7 +42,7 @@ export default class NavBar extends Component{
           )
         }else{
           return (
-            <TouchableOpacity onPress={onPress} style={styles.btn}>
+            <TouchableOpacity onPress={onPress} style={styles.btn} activeOpacity={0}>
               <Icon name={name} size={px2dp(22)} color="#fff" />
             </TouchableOpacity>
           )
@@ -89,10 +90,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: px2dp(10)
     },
     btn: {
-      // width: 40,
-      // height: 40,
+      width: 40,
+      height: 40,
+      marginLeft: -10,
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     title:{
         color: "#fff",

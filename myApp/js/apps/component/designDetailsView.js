@@ -79,7 +79,7 @@ export default class designDetailsView extends Component {
               <Image 
                 defaultSource={LocalImg['back']}
                 resizeMode = {'contain'}
-                style={[styles.imgStyle,{flex: 1,height:height * 0.85}]}
+                style={[styles.imgStyle,{flex: 1,height:__APP__?height * 0.35:height * 0.85}]}
                 // style={[styles.imgStyle,{resizeMode:''}]}
                 source={LocalDesignImg[n.url]}
                 // onLoadEnd = {()=>_this._onLoadEnd('加载结束后，不论成功还是失败，调用此回调函数',n.url)}
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   imgStyle:{
      width:width - px2dp(10),
-     height:(width - px2dp(10))*3 /4,
+     // height:(width - px2dp(10))*3 /4,
      marginTop: px2dp(5),
     // marginBottom: px2dp(10)
   }

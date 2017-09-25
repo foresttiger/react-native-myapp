@@ -86,6 +86,9 @@ export default class HomePage extends Component {
       this.SEARCH_DIFF_Y = this.SEARCH_FIX_Y-this.SEARCH_BOX_Y
       this.SEARCH_FIX_DIFF_Y = headH-this.SEARCH_FIX_Y-headH
   }
+  static navigationOptions = {
+    title: '首页',
+  };
 
   componentDidMount() {
     console.log(storage)
@@ -164,13 +167,14 @@ export default class HomePage extends Component {
       outputRange: [1, 1, 0]
     })
     return (
-      <View style={styles.header}>
-        <Animated.View style={[styles.lbsWeather, {opacity: lbsOpaticy}]}>
-          <Image
+      <View style={[styles.header,{paddingTop: __APP__?40:10,paddingBottom:0}]}>
+        <Animated.View style={[styles.lbsWeather, {opacity: lbsOpaticy,alignItems:"flex-start"}]}>
+          {/*<Image
             style={{width:310,height: 40}}
             source={LocalImg['logo']}
-          />
-          <Text style={styles.mTitle}></Text>
+          />*/}
+          <Text style={{width:width,fontSize: px2dp(14),fontWeight:'500',color:'#FFFFFF'}}>赫曼德·德国整体厨房</Text>
+          {/*<Text style={styles.mTitle}>KIC-赫曼德·德国整体厨房</Text>*/}
           {/*<TouchableWithoutFeedback onPress={this.openLbs.bind(this)}>
             <View style={styles.lbs}>
               <Icon name="ios-pin" size={px2dp(16)} color="#fff" />
@@ -397,12 +401,12 @@ export default class HomePage extends Component {
 
       }
       return isIOS?(
-        <View key={i} style={[styles.recomItem, styl[i], {backgroundColor: "#ffffff"}]}>
+        <View key={i} style={[styles.recomItem, styl[i], {backgroundColor: "#ffffff",height: (__PAD__)?80:px2dp(50),}]}>
           <TouchableOpacity style={{flex: 1}} onPress={() => {this.goDesignList("designList",dataObj)}}>{_render(i)}</TouchableOpacity>
         </View>
       ):(
         <View key={i} style={[styles.recomItem, styl[i]]}>
-          <TouchableNativeFeedback number={0.8} style={{flex: 1, height: 70}}>{_render(i)}</TouchableNativeFeedback>
+          <TouchableNativeFeedback number={0.8} style={{flex: 1, height: 70,height: (__PAD__)?80:px2dp(60),}}>{_render(i)}</TouchableNativeFeedback>
         </View>
       )
     })
@@ -493,6 +497,7 @@ export default class HomePage extends Component {
           )}
           removeClippedViews={false}
           scrollEventThrottle={16}
+          showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl
               refreshing={this.state.isRefreshing}
@@ -517,6 +522,17 @@ export default class HomePage extends Component {
             {this._renderQuality()}
           </View>*/}
           {/*this._renderVideo()*/}
+          <Text style={{fontSize:px2dp(12),color:'#000000',backgroundColor: '#ffffff',marginVertical: px2dp(5),paddingVertical: px2dp(10),paddingHorizontal: px2dp(12)}}>精选大图</Text>
+            <Image source={LocalImg["home1"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home2"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home3"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home4"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home5"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home6"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home7"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home8"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home9"]} style={styles.homeImg}/>
+            <Image source={LocalImg["home10"]} style={styles.homeImg}/>
         </ScrollView>
         {this._renderFixHeader()}
         {/*<SearchView show={this.state.searchView} scrollY={this.state.scrollY}/>*/}
@@ -624,6 +640,7 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   scrollView: {
+    flex:1
     // marginBottom: px2dp(46)
   },
   recom: {
@@ -708,4 +725,10 @@ const styles = StyleSheet.create({
     bottom: 0,
     right: 0,
   },
+  homeImg: {
+      height: width / 1.6,
+      width: width,
+      resizeMode: 'stretch',
+      marginBottom: px2dp(3)
+  }
 })

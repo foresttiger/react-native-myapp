@@ -51,5 +51,15 @@ export default {
   banner0: require('./images/banner1.png'),
   banner1: require('./images/banner2.png'),
   banner2: require('./images/banner3.png'),
-  banner3: require('./images/banner4.png'),
+  home1: require('./images/home1.jpg'),
+  home2: require('./images/home2.jpg'),
+  home3: require('./images/home3.jpg'),
+  home4: require('./images/home4.jpg'),
+  home5: require('./images/home5.jpg'),
+  home6: require('./images/home6.jpg'),
+  home7: require('./images/home7.jpg'),
+  home8: require('./images/home8.jpg'),
+  home9: require('./images/home9.jpg'),
+  home10: require('./images/home10.jpg'),
+
 }
