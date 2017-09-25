@@ -8,7 +8,8 @@ import React, { Component } from 'react'
 import {
   Text,
   View,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native'
 import NavBar from '../component/NavBar'
 import Item from '../component/Item'
@@ -48,6 +49,12 @@ class Setting extends Component {
         args: {}
     });
   }
+  islogout(){
+    let _this = this;
+    Alert.alert('退出登录','确定要退出登录吗？',
+      [{text:"确认", onPress:_this.logout.bind(this)}]
+    );
+  }
   logout() {
     const { loginOut } = this.props;
     loginOut();
@@ -70,7 +77,7 @@ class Setting extends Component {
           {/*<Item name="关于饿了么" first={true}/>*/}
           
         </ScrollView>
-        <Item.Button name="退出登录" color={'#c0a354'} onPress={this.logout.bind(this)} first={true}/>
+        <Item.Button name="退出登录" color={'#c0a354'} onPress={this.islogout.bind(this)} first={true}/>
       </View>
     )
   }

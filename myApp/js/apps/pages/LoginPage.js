@@ -9,7 +9,8 @@ import {
   Image,
   Alert,
   Platform,
-  StatusBar
+  StatusBar,
+  ActivityIndicator
 } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { Hideo } from 'react-native-textinput-effects';
@@ -47,6 +48,7 @@ class LoginPage extends Component {
           password: '',
           initial:'PORTRAIT',
           loginBack:'loginBack',
+          animating: true,
       };  
   } 
   static navigationOptions = {
@@ -115,6 +117,17 @@ class LoginPage extends Component {
       }
       login(obj)
   }
+  showOrHide() {
+    if (this.state.animating) {
+      this.setState({
+        animating: false
+      });
+    } else {
+      this.setState({
+        animating: true
+      });
+    }
+  }
  render() { 
   let _width = isLANDSCAPE?width*0.4:width*0.95;
   let _loginBack = this.state.loginBack;
@@ -170,8 +183,22 @@ class LoginPage extends Component {
         <View style={styles.loginBack}> 
           <Image source={LocalImg[_loginBack]} style={{width: width,height:height}}/>
         </View>
+        {/* 切换显示或隐藏的按钮 */}
+        <TouchableOpacity underlayColor="#fff" style={styles.btn} onPress={
+          this.showOrHide.bind(this)}>
+            <Text style={{color:'#fff', fontSize: 20}}>显示/隐藏</Text>
+        </TouchableOpacity>
+        <ActivityIndicator
+          animating={this.state.animating}
+          style={[styles.centering, {height: 80}]}
+          size="small" />
+        <ActivityIndicator
+          animating={this.state.animating}
+          size="large"
+          color='#c0a354'
+          />
     </View>
-) } }
+)}} 
 
 const styles = StyleSheet.create({
     container: {

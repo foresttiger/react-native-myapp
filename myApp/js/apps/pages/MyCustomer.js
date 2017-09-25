@@ -17,8 +17,7 @@ import NavBar from '../component/NavBar'
 import Counter from '../../components/Counter';
 import { connect } from 'react-redux'; // 引入connect函数
 import { NavigationActions } from 'react-navigation';
-import *as counterAction from '../../actions/counterAction';
-import *as loginAction from '../../actions/loginAction';// 导入action方法
+import *as customerAction from '../../actions/customerAction';// 导入action方法
 import LocalImg from '../images'
 import px2dp from '../util'
 
@@ -54,7 +53,8 @@ class MyCustomer extends Component {
 
       this.state = {
         dataSource:ds.cloneWithRows(data),
-        rows: data
+        rows: data,
+        customerId:"sdasds"
       }
   }
   static navigationOptions = ({ navigation, screenProps }) => ({
@@ -76,7 +76,12 @@ class MyCustomer extends Component {
       //在static中使用this方法  
       this.props.navigation.setParams({ navigatePress:this._addAdress })  
   }  
-  _deleteRow(rowID) {
+  _deleteRow(rowdata, sectionID, rowID) {
+    const { delCustomer } = this.props;
+    let obj = {
+        customerId: sectionID,
+    }
+    delCustomer(obj)
     this.state.rows.splice(rowID, 1)
     this.setState({
       dataSource: ds.cloneWithRows( this.state.rows ),
@@ -104,7 +109,7 @@ class MyCustomer extends Component {
               <Text style={styles.phone}>{rowdata.phone}</Text>
               <Text style={styles.address}>{rowdata.address}</Text>
             </View>
-            <TouchableOpacity style={styles.del} onPress={()=>{this._deleteRow(rowID)}}>
+            <TouchableOpacity style={styles.del} onPress={()=>{this._deleteRow(rowdata, sectionID, rowID)}}>
                 <FontAwesomeIcon name={"trash-o"} size={px2dp(20)} color="rgba(0,0,0,0.4)" />
             </TouchableOpacity>
         </View>
@@ -171,9 +176,10 @@ const styles = StyleSheet.create({
 
 export default connect(
   (state) => ({
-    count: state.counter.count,
+    customerId: state.customerDo.customerId,
+    status:state.customerDo.status
   }),
   (dispatch) => ({
-    loginOut: () => dispatch(loginAction.loginOut()),
+    delCustomer: (obj) => dispatch(customerAction.delCustomer(obj)),
   })
 )(MyCustomer)
