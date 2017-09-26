@@ -19,7 +19,7 @@ export default class Discover extends Component {
   }
   render(){
     return (
-      <View style={{flex: 1, backgroundColor: "#000000",paddingTop: 20}}>
+      <View style={{flex: 1, backgroundColor: "#c0a354",paddingTop: 20}}>
         <NavBar title="云尚筑家"/>
         <MyWebView
           source={{uri: 'http://www.nn-home.com'}}

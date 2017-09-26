@@ -11,8 +11,8 @@ const isIOS = Platform.OS == "ios"
 
 global.__ANDROID__ = !isIOS;
 global.__IOS__ = isIOS;  
-global.__PAD__ = true;
-global.__APP__ = false;
+global.__PAD__ = false;
+global.__APP__ = true;
 
 export default class myApp extends Component {
 	componentWillMount() {

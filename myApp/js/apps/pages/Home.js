@@ -167,7 +167,7 @@ export default class HomePage extends Component {
       outputRange: [1, 1, 0]
     })
     return (
-      <View style={[styles.header,{paddingTop: __APP__?10:40,paddingBottom:0}]}>
+      <View style={[styles.header,{paddingTop: __APP__?40:40,paddingBottom:0}]}>
         <Animated.View style={[styles.lbsWeather, {opacity: lbsOpaticy,alignItems:"flex-start"}]}>
           {/*<Image
             style={{width:310,height: 40}}
@@ -488,26 +488,29 @@ export default class HomePage extends Component {
   }
   render(){
     return (
-      <View style={{flex: 1, backgroundColor: "#f3f3f3"}}>
+      <View style={{flex: 1, backgroundColor: "#c0a354"}}>
 
         <ScrollView
+          // scrollEnabled={false}
           style={styles.scrollView}
           onScroll={Animated.event(
             [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}]
           )}
           removeClippedViews={false}
-          scrollEventThrottle={16}
+          // scrollEventThrottle={16}
           showsVerticalScrollIndicator={false}
           refreshControl={
             <RefreshControl
               refreshing={this.state.isRefreshing}
               onRefresh={this._onRefresh.bind(this)}
               // colors={['#ddd', '#c0a354']}
-              progressBackgroundColor="#ffffff"
+              tintColor='#ffffff'
+              progressBackgroundColor="#c0a354"
             />
           }
         >
-          
+          <View style={{flex:1,backgroundColor: '#f3f3f3'}}>
+
           {this._renderHeader()}
           <CarouselView />
          {/* <View style={{flex:1,backgroundColor: "#fff"}}>
@@ -533,6 +536,7 @@ export default class HomePage extends Component {
             <Image source={LocalImg["home8"]} style={styles.homeImg}/>
             <Image source={LocalImg["home9"]} style={styles.homeImg}/>
             <Image source={LocalImg["home10"]} style={styles.homeImg}/>
+            </View>
         </ScrollView>
         {this._renderFixHeader()}
         {/*<SearchView show={this.state.searchView} scrollY={this.state.scrollY}/>*/}
@@ -640,7 +644,8 @@ const styles = StyleSheet.create({
     flexDirection: "row"
   },
   scrollView: {
-    flex:1
+    flex:1,
+    backgroundColor: '#c0a354'
     // marginBottom: px2dp(46)
   },
   recom: {
