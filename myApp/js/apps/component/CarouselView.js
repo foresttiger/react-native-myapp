@@ -59,6 +59,7 @@ export default class CarouselView extends Component {
             <ListView
                 dataSource={this.state.dataSource}
                 renderRow={this.renderRow}
+                removeClippedSubviews={false}
                 contentContainerStyle={styles.contentViewStyle}
                 scrollEnabled={false}
             />

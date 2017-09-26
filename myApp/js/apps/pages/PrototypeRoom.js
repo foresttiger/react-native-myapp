@@ -47,6 +47,7 @@ import DataEncrypt from '../component/DataEncrypt'
 import prototypeRoomDetails from '../component/prototypeRoomDetails'
 import NetWorksTools from '../tools/NetWorksTools'
 import ErrorPage from '../component/errorPage'
+import LoadingModel from '../component/loadingModel'
 
 const isAndroid = Platform.OS != "ios"
 const { width, height } = Dimensions.get('window')
@@ -153,6 +154,7 @@ export default class PrototypeRoom extends Component {
         visibleModal:null,
         key:0,
         loader:false,
+        loadingModal:true,
         BRAND:{
           description:"品牌",
           productFeatureId:""
@@ -277,7 +279,8 @@ export default class PrototypeRoom extends Component {
               //AlertIOS.alert("网络错误", "网络连接失败，请连接网络后重试！");
 
           }else{
-            _this.setState({"loader":true})
+            _this.setState({"loader":true,"loadingModal":false})
+            // _this._loadingModel()
              // _this._renderMiddle(true)
           }
           NetInfo.isConnected.removeEventListener(
@@ -458,7 +461,7 @@ export default class PrototypeRoom extends Component {
     let isloader = this.state.loader;
     console.log(isloader)
     if (isloader) {
-       // this._loadData(1)
+           // this._loadData(1)
        // this._InitSearchData();
        return (
         <View style={{flex:1}}>
@@ -528,6 +531,11 @@ export default class PrototypeRoom extends Component {
       )
   }
   _render(){
+      let dataObj = {
+          type: 'modelview',
+          name: "正在加载...",
+          visibleModal: this.state.loadingModal,
+      }
     let _this = this;
     let _scrollView = undefined;
     let ModelView = this.state.ModelView;
@@ -568,6 +576,7 @@ export default class PrototypeRoom extends Component {
 	          />
 	        }
 	      >
+          <LoadingModel data={dataObj} />
           <View style={styles.scrollViewStyle}>
   	        {
   	          this.state.data.map((item, i) => {
@@ -579,6 +588,7 @@ export default class PrototypeRoom extends Component {
       	 </ScrollView>
 
         {ModelView}
+        
       </View>
     )
   }

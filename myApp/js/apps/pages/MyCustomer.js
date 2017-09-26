@@ -26,7 +26,7 @@ let radio = 1
 const { width, height } = Dimensions.get('window')
 const isIOS = Platform.OS == "ios"
 const resetAction = NavigationActions.reset({
-  index: 0,
+  index: 1,
   actions: [
     NavigationActions.navigate({ routeName: 'MyTab'})
   ]
@@ -67,7 +67,7 @@ class MyCustomer extends Component {
       },
       headerTintColor: '#ffffff',
       headerRight: (
-            <Text  onPress={navigation.state.params&&navigation.state.params.navigatePress.bind(this)} style={{marginLeft:5, width:30, textAlign:"center"}} >  
+            <Text  onPress={navigation.state.params&&navigation.state.params.navigatePress.bind(this)} style={{marginRight:px2dp(12), width:30, textAlign:"center"}} >  
                 <Icon name='md-add' size={px2dp(20)} color='#ffffff' /> 
             </Text>  
         )
