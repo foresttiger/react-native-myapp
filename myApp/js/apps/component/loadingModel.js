@@ -54,6 +54,7 @@ export default class tipModel extends Component {
           // animationIn={this.state.animationIn}
           // animationOut={this.state.animationOut}
           backdropOpacity={0.1}
+          animationType={'fade'}
           // onBackdropPress={this.close.bind(this)}
           >
           <View style={styles.modalContent}>

@@ -167,7 +167,7 @@ export default class HomePage extends Component {
       outputRange: [1, 1, 0]
     })
     return (
-      <View style={[styles.header,{paddingTop: __APP__?10:40,paddingBottom:0}]}>
+      <View style={[styles.header,{paddingTop: __APP__?30:40,paddingBottom:0}]}>
         <Animated.View style={[styles.lbsWeather, {opacity: lbsOpaticy,alignItems:"flex-start"}]}>
           {/*<Image
             style={{width:310,height: 40}}
@@ -406,7 +406,7 @@ export default class HomePage extends Component {
         </View>
       ):(
         <View key={i} style={[styles.recomItem, styl[i]]}>
-          <TouchableNativeFeedback number={0.8} style={{flex: 1, height: 70,height: (__PAD__)?80:px2dp(60),}}>{_render(i)}</TouchableNativeFeedback>
+          <TouchableNativeFeedback number={0.8} style={{flex: 1,height: (__PAD__)?80:px2dp(60),}}>{_render(i)}</TouchableNativeFeedback>
         </View>
       )
     })
