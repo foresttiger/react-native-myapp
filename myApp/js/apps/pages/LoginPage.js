@@ -119,8 +119,6 @@ class LoginPage extends Component {
       let dataObj = {
           type: 'modelview',
           name: "正在登录...",
-          animationIn: "slideInLeft",
-          animationOut: "slideOutLeft",
           visibleModal: true,
       }
       this._renderModal(dataObj);

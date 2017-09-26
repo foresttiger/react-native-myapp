@@ -31,8 +31,8 @@ export default class tipModel extends Component {
             "type":datas.type,
             "name":datas.name,
             "defaultSelect":datas.defaultSelect,
-            "animationIn":datas.animationIn ,
-            "animationOut":datas.animationOut ,
+            // "animationIn":datas.animationIn ,
+            // "animationOut":datas.animationOut ,
             "visibleModal":datas.visibleModal ,
             "color":datas.color,
           }        
@@ -51,10 +51,11 @@ export default class tipModel extends Component {
           backdropTransitionOutTiming={500}
           style={styles.modelViewStyle}
           isVisible={this.state.visibleModal == true}
-          // animationIn={this.state.animationIn}
-          // animationOut={this.state.animationOut}
+          animationIn={'fadeIn'}
+          animationOut={'fadeOut'}
           backdropOpacity={0.1}
-          animationType={'fade'}
+          animationType={'none'}
+          // animated={'false'}
           // onBackdropPress={this.close.bind(this)}
           >
           <View style={styles.modalContent}>
