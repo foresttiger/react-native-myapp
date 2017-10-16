@@ -199,6 +199,7 @@ export default class PrototypeRoom extends Component {
                data: DataEncrypt(responseData).records,
                isRefreshing: false,
                viewIndex:index,
+               loadingModal:false
             }
             if (stateData) {Object.assign(_obj, stateData)}
             _this.setState(_obj)
@@ -279,7 +280,7 @@ export default class PrototypeRoom extends Component {
               //AlertIOS.alert("网络错误", "网络连接失败，请连接网络后重试！");
 
           }else{
-            _this.setState({"loader":true,"loadingModal":false})
+            _this.setState({"loader":true})
             // _this._loadingModel()
              // _this._renderMiddle(true)
           }
@@ -531,6 +532,7 @@ export default class PrototypeRoom extends Component {
       )
   }
   _render(){
+    console.log(this.state.loadingModal)
       let dataObj = {
           type: 'modelview',
           name: "正在加载...",
