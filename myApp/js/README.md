@@ -1,20 +1,20 @@
 ##install webpack
-### Windows 
+## Windows 
 # cmd Administrator mode
 #npm install webpack -g
 
-### MAC
+## MAC
 # sudo npm install webpack -g
  
-### install modules
+## install modules
 # root directory.   npm install
 
-### install webpack-dev-server
+## install webpack-dev-server
 #  root directory npm install webpack-dev-server --save-dev
 
-### build
+## build
 # npm run build
 
-### run
+## run
 # npm start  
 
